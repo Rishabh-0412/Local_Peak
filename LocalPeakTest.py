@@ -8,11 +8,12 @@ def get_peak(num_list):
         return num_list[1]
 
     elif len(num_list) == 3:
-        if num_list[0] > num_list[1] and num_list[0] > num_list[2]:
+        if num_list[0] > num_list[1]:
             return num_list[0]
-        elif num_list[2] > num_list[1] and num_list[2] > num_list[0]:
+        elif num_list[2] > num_list[1]:
             return num_list[2]
-        return num_list[1]
+        elif num_list[1] > num_list[0] and num_list[1]>num_list[2]:
+            return num_list[1]
 
     return num_list[0]
 
@@ -29,3 +30,9 @@ class LocalPeakTest(unittest.TestCase):
 
     def test_peak_array_size_3_and_Peak_at_left(self):
         self.assertEqual(19, get_peak([19, 10, 2]))
+
+    def test_peak_array_size_3_and_Peak_at_left_2(self):
+        self.assertEqual(19, get_peak([19, 10, 22]))
+
+    def test_peak_array_size_3_and_Peak_at_right(self):
+        self.assertEqual(22, get_peak([9, 10, 22]))
